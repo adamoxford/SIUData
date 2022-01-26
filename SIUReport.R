@@ -11,6 +11,6 @@ SIUReport <- SIUReport %>%
          Date_referred = Date.referred,
          Progress_to_date = Progress.to.date)
 
-t <- datatable(SIUReport, filter = "top")
+t <- datatable(SIUReport, filter = "top", height = "1000", fillContainer = TRUE)
 
 t
