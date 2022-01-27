@@ -2,7 +2,7 @@ library(htmlwidgets)
 library(DT)
 library(tidyverse)
 
-SIUReport <- read.csv("SIUReferrals.csv")
+SIUReport <- read.csv("SUIFinal.csv")
 
 SIUReport <- SIUReport %>% 
   rename(State_Institution = State.Institution,
@@ -11,6 +11,9 @@ SIUReport <- SIUReport %>%
          Date_referred = Date.referred,
          Progress_to_date = Progress.to.date)
 
-t <- datatable(SIUReport, filter = "top", fillContainer = TRUE)
+t <- SIUReport %>% datatable(rownames = FALSE, filter = "top", height = "1000", width = "100%", fillContainer = TRUE, options = list(scrollY = "1000px", scrollCollapse = TRUE))
+
 
 t
+
+saveWidget(t, "index.html", selfcontained = TRUE)
